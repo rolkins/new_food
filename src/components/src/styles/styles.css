@@ -512,11 +512,10 @@ body{
 /* INTRO STYLES START */
 
 .intro {
-    background-color: #F0F5FB;
-    height: 80vh;
-    /*background:  url("../img/png/backOne.png") no-repeat center;*/
+    height: 85vh;
+    background: url("../../HelloBlock/Intro/src/images/backOne.png") no-repeat center;
     background-size: cover;
-    padding-top: 297px;
+    padding-top: 197px;
 
 }
 
@@ -547,3 +546,154 @@ body{
 
 }
 /* INTRO STYLES END */
+
+/* CATALOG STYLES START */
+.catalog{
+    padding-top: 85px;
+    height: 100%;
+}
+
+.catalog__title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 59px;
+}
+
+.catalog__wrapper{
+    max-width: 1161px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-top: 53px;
+}
+
+.catalog__search-and-basket{
+     margin: auto;
+     padding-bottom: 30px;
+}
+
+.catalog__search-form{
+     display: flex;
+     flex-wrap: wrap;
+}
+
+.search__field{
+    width: 260px;
+    height: 60px;
+    background: #FFFFFF;
+    border: 2px solid #ECEEF7;
+    box-sizing: border-box;
+    border-radius: 57px;
+
+    padding-left: 31px;
+    font-size: 14px;
+    line-height: 140%;
+    margin-right: 37px;
+}
+
+.catalog__nav{
+    margin: auto;
+    padding-bottom: 122px;
+}
+
+.catalog__list{
+     display: flex;
+     flex-wrap: wrap;
+}
+
+.catalog__item-type{
+    width: 135px;
+    height: 55px;
+    margin-right: 45px;
+    margin-top: 30px;
+    background: linear-gradient(0deg, #ECEEF6, #ECEEF6), #59AAF1;
+    border-radius: 45px;
+}
+
+.catalog__item-type.active{
+    background: #59AAF1;
+    color: #FFFFFF;
+}
+
+.type__text{
+    padding-bottom: 122px;
+
+    margin: 16px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+    text-align: center;
+}
+
+.cards {
+    max-width: 1160px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.item__card{
+    max-width: 260px;
+    min-height: 415px;
+    margin-bottom: 50px;
+}
+
+.item__card-rectangle{
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: -2.55%;
+    background: #FFFFFF;
+    border: 2px solid white;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+
+.item__card-img{
+    width: 100%;
+    background: #FFFFFF;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.item__card-name{
+    margin-left: 25px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+    padding-bottom: 8px;
+}
+
+.item__card-description{
+    margin-left: 25px;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 140%;
+    padding-bottom: 19px;
+}
+
+.item__card-price{
+    text-align: center;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 140%;
+    padding-bottom: 18px;
+}
+
+.item__card-button{
+    margin: 5px auto;
+    display: block;
+    background: url('../../Catalog/Products/src/images/pocket.png') no-repeat center;
+    width: 33px;
+    height: 33px;
+    border: 2px solid #ECEEF6;
+    box-sizing: border-box;
+    border-radius: 59px;
+}
+/* CATALOG STYLES END */
