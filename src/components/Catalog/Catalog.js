@@ -10,17 +10,17 @@ import Order from "../Order/Order";
 
 
 export default function Catalog() {
-    // let a = JSON.parse(localStorage.getItem('basket'))
-    // if (a !== true) {
-    //     console.log('Тыр')
-    // }else {
-    //     a = a.map(function (b) {
-    //         return b.price
-    //     })
-    //
-    // }
-    //
-    // console.log(a)
+    let a = JSON.parse(localStorage.getItem('basket'))
+    if (a !== true) {
+        console.log('Тыр')
+    }else {
+        a = a.map(function (b) {
+            return b.price
+        })
+
+    }
+
+    console.log(a)
     const ordering = useSelector(state => state.order.ordering)
 
 

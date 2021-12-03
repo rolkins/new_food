@@ -2,6 +2,7 @@ import React, {useState, useRef} from "react";
 import '../../src/styles/styles.css'
 import { useSelector, useDispatch } from 'react-redux';
 import {addProductToBasket} from "../../../redux/actions";
+import Alert from '@mui/material/Alert';
 
 export default function ProductCard(props) {
     const dispatch = useDispatch()
@@ -9,6 +10,7 @@ export default function ProductCard(props) {
     const [position, setPosition] = useState()
     const [quantity, setQuantity] = useState(0)
     const [price, setPrice] = useState(props.product.price)
+    const [added, setAdded] = useState(false)
 
     const quantityRef = useRef()
 
@@ -16,9 +18,18 @@ export default function ProductCard(props) {
         setQuantity(quantityRef.current.value)
     }
 
+    let close = document.querySelectorAll('.card')
+
+    for(let card of close) {
+        card.insertAdjacentHTML("afterbegin", '<button class="remove-button">.</button>');
+        card.firstChild.onclick = () => card.remove();
+    }
+
     return (
+        
         <section className='card'>
             <div className="card__product">
+
                 <div className="card__product-top">
                     <img src={props.product.image} alt="" className="card__product-top-image"/>
                 </div>
@@ -46,7 +57,7 @@ export default function ProductCard(props) {
                                 <div className="card__product-header-ready-to-basket__specify-quantity-minus"
                                 onClick={() => setQuantity(quantity - 1)}
                                 >
-                                    --
+                                    –
                                 </div>
                                 <input type="text"
                                        className="card__product-header-ready-to-basket__specify-quantity-input"
@@ -77,15 +88,17 @@ export default function ProductCard(props) {
                     </div>
 
                     <button className="card__product__button" onClick={
-                        () => addProductToBasket(props.product.name, quantity, price * quantity * 10)
-                        // () => console.log('123')
+                        () => (dispatch(addProductToBasket(props.product.id, props.product.name, quantity, price * quantity * 10, props.product.price * 10   )), setAdded(true))
                     }>
                         <p className="card__product__button-text">
-                            Добавить в корзину
+                                {added === false ? 'Добавить в корзину' : 'Товар теперь в корзине!'}
                         </p>
                     </button>
 
                 </div>
+
+
+
 
             </div>
         </section>

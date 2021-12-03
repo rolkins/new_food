@@ -5,21 +5,27 @@ export const CATEGORY = "CATEGORY"
 export const PRODUCT = "PRODUCT"
 export const ADD_TO_BASKET = "ADD_TO_BASKET"
 export const ORDERING = "ORDERING"
+export const ORDERED = "ORDERED"
 
-export const URL = 'http://127.0.0.1:8000'
+// export const URL = 'http://127.0.0.1:8000'
+export const URL = 'https://ecofruits.store:8000'
 
 ////// AUTHENTICATION SYSTEM ///////
 
 export const login_or_registration = (email, password) => {
+    console.log(email, password)
     return async dispatch => {
+        console.log(123)
         try {
             const content = {
                 "email": email,
                 "password": password
             }
 
+            console.log(content)
+
             const res = await fetch(
-                URL + '/accounts/login_or_registration/', {
+                URL + '/v1/users/login_or_registration/', {
                     method: "POST",
                     body: JSON.stringify(content),
                     headers: {'Content-Type': 'application/json'}
@@ -42,7 +48,7 @@ export const login_or_registration = (email, password) => {
                 }
             }
         }catch (e) {
-            console.log('something error')
+            alert(e)
         }
     }
 }
@@ -92,8 +98,8 @@ export const fetchCategories = () => {
             dispatch({
                 type: CATEGORY,
                 payload: {
-                    category: category,
-                    products: category.products
+                    category: category.results,
+                    products: category.results.products
                 }
             })
         }
@@ -129,7 +135,7 @@ export const fetchProducts = (id) => {
 // localStorage.setItem('basket', JSON.stringify(basket))
 
 
-export const addProductToBasket = (position, quantity, price) => {
+export const addProductToBasket = (id, position, quantity, price, main_price) => {
     let basket = []
     let sum = []
     if(localStorage.getItem('basket')){
@@ -139,10 +145,15 @@ export const addProductToBasket = (position, quantity, price) => {
         sum = JSON.parse(localStorage.getItem('sum'))
     }
 
-    basket.push({'position' : position, 'quantity': quantity, 'price': price });
+    basket.push({'id': Math.floor(Math.random() * id + Math.random()), 'position' : position, 'quantity': quantity,
+        'price': price, 'main_price': main_price });
     sum.push(price)
     localStorage.setItem('basket', JSON.stringify(basket))
     localStorage.setItem('sum', JSON.stringify(sum))
+
+    let a = JSON.parse(localStorage.getItem('sum'))
+
+    console.log(a.reduce((a, b) => a + b, 0))
 
     // let item = {'position': position, 'quantity': quantity, 'price': price}
     // basket.push({
@@ -152,23 +163,19 @@ export const addProductToBasket = (position, quantity, price) => {
     // })
 
 
-    // return async dispatch => {
-    //     try {
-    //         dispatch({
-    //             type: ADD_TO_BASKET,
-    //             payload: {
-    //                 item: {
-    //                     position: position,
-    //                     quantity: quantity,
-    //                     price: price
-    //                 }
-    //             }
-    //         })
-    //     }
-    //     catch (e) {
-    //         alert(e)
-    //     }
-    // }
+    return async dispatch => {
+        try {
+            dispatch({
+                type: ADD_TO_BASKET,
+                payload: {
+                    price: a.reduce((a, b) => a + b, 0)
+                }
+            })
+        }
+        catch (e) {
+            alert(e)
+        }
+    }
 }
 
 export const ordering = (status) => {
@@ -185,5 +192,39 @@ export const ordering = (status) => {
         }
     }
 }
+
+export const createOrder = (method, name, address, house, flat, telephone, basket, sum) => {
+    return async dispatch => {
+        try {
+             const data = await fetch(
+            URL + '/v1/sales/orders/', {
+                method: "POST",
+                body: JSON.stringify({
+                    "price_sum": sum,
+                    "delivery_address": 'Улица: ' + address + ' Дом: ' + house + ' Квартира: ' + flat,
+                    "telephone_number": telephone,
+                    "customer_name": name,
+                    "payment_method": method,
+                    "positions_in_order": JSON.stringify(basket)
+                }),
+                headers: {'Content-Type': 'application/json'}
+            }
+        )
+            localStorage.removeItem('basket')
+         const response = await data.json()
+         console.log(response)
+            dispatch({
+                type: ORDERED,
+                payload: true,
+            })
+
+        }
+        catch (e) {
+            alert(e)
+        }
+    }
+
+    }
+
 
 //////////////////

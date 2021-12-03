@@ -46,7 +46,7 @@ export default function Header() {
                                   status === 'contacts' ? <Contacts />
                                   :
                                       <Box>
-                                             <Auth />
+                                                <Auth />
                                       </Box>
 
                          }

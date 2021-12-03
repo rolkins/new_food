@@ -7,12 +7,16 @@ import Checkbox from '@mui/material/Checkbox';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
 import { useSelector, useDispatch } from 'react-redux';
-import {ordering} from "../../redux/actions";
+import {ordering, createOrder} from "../../redux/actions";
 import React, {useState, useRef} from "react";
 import '../src/styles/styles.css'
 
 export default function OrderForm() {
+    const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')))
+
     const dispatch = useDispatch()
+    const sum1 = useSelector(state => state.order.sum_of_order)
+    const [sum, setSum] = useState(12)
 
     const [method, setMethod] = useState('')
     const [name, setName] = useState()
@@ -30,15 +34,9 @@ export default function OrderForm() {
     const flatRef = useRef();
     const bonusRef = useRef()
 
-
-
     const getName = () => {
         setName(nameRef.current.value)
     }
-
-    console.log(name)
-
-
 
     const getHouse = () => {
          setHouse(houseRef.current.value)
@@ -67,13 +65,13 @@ export default function OrderForm() {
                         Метод оплаты
                     </h1>
 
-            <div className="order__form-payment-method__methods-block">
+            <div className="order__form-payment-method__methods-block"> 
                 <div className="order__form-payment-method__e_money" onClick={() => setMethod('Электронные')}>
                     {
                         method === 'Электронные'
                         ?
                             <p>
-                               💻 ✅ Оплачу через сайт
+                              ✅ 💻  Оплачу через сайт
                             </p>
                             :
                             <p>
@@ -147,7 +145,7 @@ export default function OrderForm() {
             variant="standard"
             onChange={getTelephone}
             value={telephone}
-            ref={telephoneRef}
+            inputRef={telephoneRef}
           />
         </Grid>
 
@@ -162,7 +160,7 @@ export default function OrderForm() {
             variant="standard"
             onChange={getAddress}
             value={address}
-            ref={addressRef}
+            inputRef={addressRef}
           />
         </Grid>
 
@@ -177,7 +175,7 @@ export default function OrderForm() {
             variant="standard"
             onChange={getHouse}
             value={house}
-            ref={houseRef}
+            inputRef={houseRef}
           />
         </Grid>
 
@@ -190,7 +188,7 @@ export default function OrderForm() {
             variant="standard"
             onChange={getFlat}
             value={flat}
-            ref={flatRef}
+            inputRef={flatRef}
           />
         </Grid>
 
@@ -201,8 +199,8 @@ export default function OrderForm() {
         </Grid>
 
         <Grid item xs={12} sm={6}>
-             <Button variant="contained" endIcon={<SendIcon />} onClick={() => console.log(name)}>
-                Подтвердить заказ на сумму -
+             <Button variant="contained" endIcon={<SendIcon />} onClick={() => dispatch(createOrder(method, name, address, house, flat, telephone, basket, sum))}>
+                Подтвердить заказ на сумму - ₽{sum}
              </Button>
         </Grid>
 

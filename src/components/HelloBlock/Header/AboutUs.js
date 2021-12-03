@@ -8,9 +8,8 @@ export function AboutUs() {
                             <div className="about__us-left">
                                  <h1 className="contact__our-contacts">
                                      О нас
-                            </h1>
+                                </h1>
                             <div className="contact__telephone-address">
-
                                 <p className="contact__info-block">
                                     Здравствуйте. Меня зовут Елизавета. Я являюсь
                                     директором и владельцем компании Eco.Fruits по продаже продуктов питания.
@@ -19,8 +18,6 @@ export function AboutUs() {
                                     развиваемся. И сейчас, со своей командой мы решили сделать очередной шаг вперёд.
                                     Мы запускаем свой сайт и доставку продкутов по городу Ижевск.
                                 </p>
-                                <br/>
-
                             </div>
                             <h2 className="contact__info">
                                 Кто наши поставщики?
@@ -43,8 +40,8 @@ export function AboutUs() {
                                  </p>
                                 <h2 className="contact__info">
                                 Сроки годности
-                            </h2>
-                            <div className="contact__info-block">
+                                </h2>
+                            <div className="contact__info-block last-block">
                                  <p className="contact__info-ip">Мы не допускаем продукты с истёкшим сроком годности и
                                      отправляем клиенту только свежее. У нас два раза в день поставка фруктов, овощей и
                                      зелени. Категорически запрещается отправка на последнем дне срока годности.
@@ -61,14 +58,14 @@ export function Contacts() {
         <div className="contact">
                             <div className="contact__left">
 
-                                 <h1 className="contact__our-contacts">
+                                 <h1 className="contact__our-contacts contact-font">
                                 Наши контакты:
                                 </h1>
 
                             <div className="contact__telephone-address">
 
                                 <p className="contact__telephone">Контактный телефон: 8-909-064-36-36</p>
-                                <br/>
+                                <br />
                                 <p className="contact__address">Юридический адрес: 426068, УР, г. Ижевск, улица Сабурова, д. 47, кв. 27</p>
 
                             </div>
@@ -95,7 +92,7 @@ export function Contacts() {
                                     <p className="contact__info-ogrn">Оплата из электронных кошельков (Яндекс.Деньги)</p>
 
                             </div>
-                                 <div className="contact__info-block">
+                                 <div className="contact__info-block last-block">
                                     <p className="contact__info-ogrn">
                                          Ознакомиться с нашим пользовательским соглашением
                                         <>

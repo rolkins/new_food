@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, useRef} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,6 +12,9 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {login_or_registration} from "../../redux/actions";
+import { useSelector, useDispatch } from 'react-redux';
+
 
 function Copyright(props) {
   return (
@@ -29,15 +32,22 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Auth() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+    const dispatch = useDispatch()
+    const [username, setUsername] = useState()
+    const [password, setPassword] = useState()
+
+    const usernameRef = useRef()
+    const passwordRef = useRef()
+
+    const getUsername = () => {
+        setUsername(usernameRef.current.value)
+    }
+
+    const getPassword = () => {
+        setPassword(passwordRef.current.value)
+    }
+
+    console.log(username)
 
   return (
     <ThemeProvider theme={theme}>
@@ -73,16 +83,19 @@ export default function Auth() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
                 fullWidth
                 id="email"
-                label="Ваша почтая"
+                label="Ваша почта"
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={getUsername}
+                value={username}
+                ref={usernameRef}
               />
               <TextField
                 margin="normal"
@@ -93,6 +106,9 @@ export default function Auth() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={getPassword}
+                value={password}
+                ref={passwordRef}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -103,6 +119,7 @@ export default function Auth() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2, }}
+                onClick={() => dispatch(login_or_registration(username, password))}
               >
                 Войти или зарегистрироваться
               </Button>

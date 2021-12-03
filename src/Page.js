@@ -9,27 +9,29 @@ import {login_or_registration, logout} from "./redux/actions";
 import Auth from "./components/Users/Auth";
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Admin from "./components/Admin/Admin";
-import Page from "./Page";
 
-function App() {
+
+export default function Page() {
     const dispatch = useDispatch()
     const is_login = useSelector(state => state)
 
-  return (
+    return(
 
-    <div className="App">
+            is_login.login.login_screen === false
+                ?
+                <div>
 
-        <Router>
-            <Switch>
+                         <Intro />
+                         <Catalog />
+                         <Feedback />
+                         <Footer />
+                         {/*<Route path="admin" component={Admin} />*/}
 
-                <Route path='/' exact component={Page} />
-                <Route path='/admin' component={Admin} />
-            </Switch>
+                </div>
+                :
+                <div>
+                    <Auth />
+                </div>
 
-        </Router>
-
-    </div>
-  );
+    )
 }
-
-export default App;

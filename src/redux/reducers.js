@@ -1,4 +1,4 @@
-import {LOGIN, LOGOUT, LOGIN_SCREEN, CATEGORY, PRODUCT, ADD_TO_BASKET, ORDERING} from "./actions";
+import {LOGIN, LOGOUT, LOGIN_SCREEN, CATEGORY, PRODUCT, ADD_TO_BASKET, ORDERING, ORDERED} from "./actions";
 
 const initialState = {
     login: {
@@ -15,7 +15,8 @@ const initialState = {
             item: null
         },
         sum_of_order: null,
-        ordering: false
+        ordering: false,
+        created: false,
     }
 }
 
@@ -46,10 +47,11 @@ export function catalogReducer(state=initialState.catalog, action) {
 export function orderReducer(state=initialState.order, action) {
     switch (action.type) {
         case ADD_TO_BASKET:
-            return {...state, item: action.payload.item}
+            return {...state, sum_of_order: action.payload.price}
         case ORDERING:
             return {...state, ordering: action.payload}
-
+        case ORDERED:
+            return {...state, created: action.payload}
         default:
             return state
     }

@@ -19,9 +19,9 @@ export default function MyBasket(position) {
                                   }
                               </h1>
 
-                              {/*<div className="card__product-header-top-add-to-fav">*/}
-                              {/*      ❤️*/}
-                              {/*</div>*/}
+                              <div className="card__product-header-top-add-to-fav" onClick={() => console.log(position)}>
+                                    ❌
+                              </div>
                         </div>
 
                         <br />
@@ -31,15 +31,15 @@ export default function MyBasket(position) {
                         </p>
 
                         <div className="card__product-header-ready-to-basket">
-                            <div className="card__product-header-ready-to-basket__specify-quantity">
-                                <div className="card__product-header-ready-to-basket__specify-quantity-minus">
-                                    --
-                                </div>
-                                <input type="text"
-                                       className="card__product-header-ready-to-basket__specify-quantity-input"/>
-                                <div className="card__product-header-ready-to-basket__specify-quantity-plus">
-                                    +
-                                </div>
+                            <div className="card__product-header-ready-to-basket__specify-quantity" >
+                                {/*<div className="card__product-header-ready-to-basket__specify-quantity-minus">*/}
+                                {/*    --*/}
+                                {/*</div>*/}
+                                {/*<input type="text"*/}
+                                {/*       className="card__product-header-ready-to-basket__specify-quantity-input" defaultValue={position.quantity}/>*/}
+                                {/*<div className="card__product-header-ready-to-basket__specify-quantity-plus">*/}
+                                {/*    +*/}
+                                {/*</div>*/}
                             </div>
 
                             <p className="card__product-header-ready-to-basket__price">

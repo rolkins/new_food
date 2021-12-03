@@ -1,0 +1,437 @@
+@media (min-width: 768px) {
+     .order__form-check-basket-button {
+        visibility: hidden;
+    }
+    .order__form-mob {
+        visibility: hidden;
+    }
+}
+@media (max-width: 1024px) {
+    .header__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding-top: 20px;
+    }
+    .header__item {
+        margin-right: 15px;
+    }
+    .header__logo {
+        max-width: 200px;
+        margin: 0 15px;
+    }
+    .intro {
+        height: 740px;
+    }
+    .catalog__wrapper {
+        padding-top: 0;
+    }
+    .catalog__search {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    .catalog__search_field_block {
+        margin-left: 0;
+        margin-right: 0;
+        width: 50%;
+        height: 50%;
+    }
+    .catalog__basket-img {
+        margin-right: 0;
+        margin-left: 10px;
+        padding-top: 15px;
+        height: 50%;
+    }
+    .catalog__basket-sum {
+        width: 70%;
+        margin-top: 0;
+    }
+    .catalog__nav {
+        padding-bottom: 60px;
+    }
+    .cards {
+        margin: 0 10px;
+    }
+    .feedmain {
+        height: 600px;
+    }
+    .footer {
+        height: 270px;
+    }
+    .footer__block {
+        width: 100%;
+        height: 170px;
+    }
+    .footer__block-top {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .footer__block-top-logo {
+        margin: 0 20px 0 15px;
+    }
+    .footer__block-top-info {
+        margin: 20px 0 0 50px;
+    }
+    .about__us {
+        width: 900px;
+    }
+    .contact {
+        width: 900px;
+    }
+    .about__us-left {
+        padding-top: 0;
+    }
+    .contact__left {
+        padding-top: 0;
+    }
+    .contact__our-contacts {
+        font-size: 25px;
+        margin-bottom: 0;
+    }
+    .contact__telephone-address {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .contact__telephone, .contact__address {
+        font-size: 16px;
+    }
+    .contact__info {
+        padding-bottom: 10px;
+        margin-bottom: 0;
+    }
+    .contact__info-block {
+        padding-bottom: 0;
+        margin: 0;
+    }
+    .last-block {
+        padding-bottom: 25px;
+    }
+    .card {
+        width: 400px;
+    }
+    .card__product-top {
+        height: max-content;
+    }
+    .order {
+        margin-top: 50px;
+    }
+}
+@media (max-width: 960px) {
+    .intro {
+        height: 830px;
+    }
+    .vegetables {
+        margin: 0 15px;
+        background-size: 100%;
+    }
+    .wrapper {
+        margin: 0 15px;
+    }
+    .catalog__basket-img {
+        width: 100%;
+    }
+    .search__field {
+        max-width: 200px;
+    }
+    .catalog__list {
+        justify-content: center;
+    }
+    .feedmain {
+        padding-top: 50px;
+        height: 650px;
+    }
+    .feedback-form__info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .feedback-form__name-field, .feedback-form__telephone-field {
+        margin-bottom: 20px;
+    }
+    .truck {
+        margin-top: 50px;
+    }
+    .footer__block-bottom {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-bottom: 20px;
+    }
+    .footer_block-bottom-copyright {
+        margin: 20px auto;
+    }
+    .about__us {
+        width: 600px;
+    }
+    .contact {
+        width: 600px;
+    }
+    .contact__left {
+        width: 55%;
+        padding-right: 20px;
+    }
+    .contact__our-contacts {
+        font-size: 20px;
+    }
+    .contact__info-block {
+        text-align: justify;
+        padding-right: 20px;
+    }
+    .last-block {
+        padding-right: 0;
+    }
+    .card {
+        width: 300px;
+    }
+    .card__product-top {
+        height: max-content;
+    }
+}
+@media (max-width: 767px) {
+    .header__wrapper {
+        padding: 20px 0;
+    }
+    .header__item {
+        margin-bottom: 5px;
+    }
+    .header__link, .header__link-bold {
+        font-size: 11px;
+    }
+    .header__logo {
+        background-size: 50%;
+        height: 40px;
+    }
+    .intro {
+        height: 570px;
+        padding-top: 150px;
+    }
+    .intro__title {
+        font-size: 32px;
+        line-height: 48px;
+    }
+    .intro__subtitle {
+        font-size: 16px;
+    }
+    .catalog {
+        padding-top: 20px;
+    }
+    .catalog__title {
+        font-size: 28px;
+    }
+    .catalog__search {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .catalog__search_field_block {
+        margin-top: 25px;
+    }
+    .search__field {
+        margin-right: 0;
+        height: 50px;
+    }
+    .catalog__basket-img {
+        margin: 0;
+        padding-left: 15px;
+    }
+    .catalog__basket-sum {
+        width: 100%;
+        font-size: 14px;
+        margin: 20px 0 0 0;
+    }
+    .catalog__item-type {
+        margin-right: 10px;
+        height: 50px;
+    }
+    .type__text {
+        font-size: 14px;
+    }
+    .catalog__nav {
+        padding-bottom: 40px;
+    }
+    .feedback__title, .feedback__annotation {
+        font-size: 28px;
+        line-height: 40px;
+    }
+    .feedback-form__info {
+        justify-content: flex-start;
+    }
+    .feedback-form__name-field, .feedback-form__telephone-field, .feedback-form__submit {
+        width: 230px;
+        height: 50px;
+        margin-right: 0;
+    }
+    .feedback-form__submit {
+        font-size: 16px;
+    }
+    .feedmain {
+        height: 680px;
+    }
+    .truck {
+        background-size: 100%;
+    }
+    .footer__block {
+        height: 300px;
+    }
+    .footer__block-top-info {
+        width: 300px;
+        margin: 0 0 0 20px;
+    }
+    .footer__block-top-info-location, .footer__block-top-info-telephone {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        margin-bottom: 15px;
+    }
+    .footer__block-top-info-location-text, .footer__block-top-info-telephone-text {
+        font-size: 12px;
+        width: 220px;
+    }
+    .footer__block-bottom {
+        margin-top: 70px;
+    }
+    .footer__block-bottom-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .footer__block-bottom-info-any {
+        width: auto;
+        text-align: center;
+        font-size: 11px;
+        margin: 0 10px;
+    }
+    .footer_block-bottom-copyright {
+        font-size: 11px;
+        margin: 15px 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .about__us {
+        width: 300px;
+        background: #F0F5FB;
+    }
+    .contact {
+        width: 300px;
+        background: #F0F5FB;
+    }
+    .about__us-left {
+        width: 100%;
+    }
+    .contact__left {
+        width: 100%;
+    }
+    .contact__telephone, .contact__address {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .contact__info-block {
+        font-size: 10px;
+    }
+    .card {
+        margin: 0 30px 0 0;
+        width: 80%;
+    }
+    .card__product-top {
+        height: min-content;
+    }
+    .order__element-of-basket {
+        display: none;
+    }
+    .order__form {
+        font-size: 14px;
+        width: 67%;
+        padding: 10px;
+        float: none;
+    }
+    .order__form-payment-method__title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .order__form-payment-method__methods-block {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .order__form-payment-method__e_money, .order__form-payment-method__cash-to-courier, .order__form-payment-method__card-to-courier {
+        margin-bottom: 10px;
+    }
+    .order__form-payment-method__cash-to-courier {
+        padding: 0;
+    }
+}
+@media (max-width: 300px) {
+    .header__link, .header__link-bold {
+        font-size: 9px;
+    }
+    .intro {
+        height: 500px;
+    }
+    .intro__title {
+        font-size: 28px;
+        line-height: 35px;
+    }
+    .intro__subtitle {
+        font-size: 14px;
+    }
+    .catalog__title {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .catalog__item-type {
+        width: 115px;
+    }
+    .type__text {
+        font-size: 12px;
+    }
+    .footer__block-top-info-location-text, .footer__block-top-info-telephone-text {
+        width: 180px;
+    }
+    .footer_block-bottom-copyright {
+        width: 230px;
+        text-align: center;
+        justify-content: center;
+    }
+    .about__us {
+        width: 200px;
+        background: #F0F5FB;
+    }
+    .contact {
+        width: 200px;
+        background: #F0F5FB;
+    }
+    .about__us-left {
+        width: 100%;
+    }
+    .contact__left {
+        width: 100%;
+    }
+    .contact-font {
+        line-height: 30px;
+        padding-top: 15px;
+        margin-bottom: 15px;
+    }
+    .contact__telephone, .contact__address {
+        font-size: 12px;
+        line-height: 15px;
+    }
+    .contact__info-block {
+        font-size: 8px;
+    }
+    .card {
+        margin: 0 20px 0 0;
+        width: 90%;
+    }
+}
+
+
+
+
+
+
+    
+
+

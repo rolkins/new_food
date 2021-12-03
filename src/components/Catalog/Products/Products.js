@@ -35,7 +35,7 @@ export default function Products() {
         {
             products === null
         ?
-            <div>1 </div>
+            <div> </div>
             :
             products.product.map(product => (
 
@@ -43,8 +43,8 @@ export default function Products() {
                 <div className="item__card-rectangle">
                     <img src={product.image} alt="" className="item__card-img"/>
                     <h1 className="item__card-name">{product.name}</h1>
-                    <p className="item__card-description">{product.note}</p>
-                    <p className="item__card-price">₽{product.price}</p>
+                    <p className="item__card-description">Цена за килограм</p>
+                    <p className="item__card-price">₽ {product.price * 10}</p>
 
                     <button className="item__card-button" onClick={() => (handleOpen(), setProduct(product))}>
 
