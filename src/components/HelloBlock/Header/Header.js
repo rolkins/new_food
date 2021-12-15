@@ -68,7 +68,7 @@ export default function Header() {
                                                 🚪 Войти
                                             </p>
                                             :
-                                              <p href="#"  className="header__link" onClick={() => localStorage.removeItem('token')}>
+                                              <p href="#"  className="header__link" onClick={() => (localStorage.removeItem('token'), localStorage.removeItem('user'))}>
                                                 🚪 Выйти
                                             </p>
                                     }
