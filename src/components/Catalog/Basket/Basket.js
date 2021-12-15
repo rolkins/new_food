@@ -25,7 +25,7 @@ export default function Basket() {
             URL + '/v1/products/search/?search=' + request
         )
         const result = await data.json()
-        setSearchResult(result)
+        setSearchResult(result.results)
     }
 
     console.log(request)

@@ -28,7 +28,7 @@ export default function Products() {
     const fetchPopProduct = async () => {
          const data = await fetch(URL + '/v1/products/popularity/')
          const items = await data.json()
-        setPopProd(items)
+        setPopProd(items.results)
     }
 
     console.log(pop_prod)

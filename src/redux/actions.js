@@ -8,8 +8,8 @@ export const ORDERING = "ORDERING"
 export const ORDERED = "ORDERED"
 export const CHANGE_CATEGORY = "CHANGE_CATEGORY"
 
-export const URL = 'http://127.0.0.1:8000'
-//export const URL = 'https://ecofruits.store:8000'
+// export const URL = 'http://127.0.0.1:8000'
+export const URL = 'https://ecofruits.store:8000'
 
 ////// AUTHENTICATION SYSTEM ///////
 
@@ -124,8 +124,8 @@ export const fetchCategories = () => {
             dispatch({
                 type: CATEGORY,
                 payload: {
-                    category: category,         // на боевом здесь и там будет с result'ом
-                    products: category.product //
+                    category: category.results,         // на боевом здесь и там будет с result'ом
+                    products: category.results.product //
                 }
             })
         }
