@@ -905,7 +905,15 @@ body{
     padding: 35px;
 }
 
+
+
+.order__element-of-basket__price {
+    font-size: 16px;
+    font-weight: 400;
+}
+
 .order__element-of-basket__title {
+    margin-top: 10px;
     font-size: 20px;
     font-weight: 600;
 }

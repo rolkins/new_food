@@ -8,29 +8,37 @@ import { useSelector, useDispatch } from 'react-redux';
 export default function Order() {
     const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')))
     const [check, setCheck] = useState(false)
+    const [sum, setSum] = useState(JSON.parse(localStorage.getItem('sum')).reduce((a, b) => a + b, 0))
     const dispatch = useDispatch()
     const ordered = useSelector(state => state.order.created)
 
     const deletePosition = (bsk) => {
-        console.log(basket)
+        console.log(bsk)
         let basket1 = JSON.stringify(basket)
         let bsk1 = JSON.stringify(bsk)
         let updated_basket = basket1.replace(bsk1, null)
-        localStorage.setItem('basket', updated_basket)
-        setBasket(JSON.parse(localStorage.getItem('basket')))
 
+        localStorage.setItem('basket', updated_basket)
+        console.log(JSON.parse(localStorage.getItem('basket')))
+        setBasket(JSON.parse(localStorage.getItem('basket')))
+        setSum(sum - bsk.price)
+        console.log(JSON.parse(localStorage.getItem('sum')))
     }
 
     return (
         <section className="order">
+            <p></p>
             {
                 ordered ?
                     <h1>Ура, заказ создан! Наш менеджер скоро свяжется с Вами </h1>
                     :
                     <div>
              <div className="order__element-of-basket">
+                 <h1 className="order__element-of-basket__price">
+                    Текущая сумма заказа в корзине: {sum} ₽
+                </h1>
                 <h1 className="order__element-of-basket__title">
-                    Моя корзина
+                    Моя корзина:
                 </h1>
 
                 {

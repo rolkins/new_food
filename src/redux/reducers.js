@@ -1,14 +1,26 @@
-import {LOGIN, LOGOUT, LOGIN_SCREEN, CATEGORY, PRODUCT, ADD_TO_BASKET, ORDERING, ORDERED} from "./actions";
+import {
+    LOGIN,
+    LOGOUT,
+    LOGIN_SCREEN,
+    CATEGORY,
+    PRODUCT,
+    ADD_TO_BASKET,
+    ORDERING,
+    ORDERED,
+    CHANGE_CATEGORY
+} from "./actions";
 
 const initialState = {
     login: {
         login_screen: false,
         login: false,
-        token: null
+        token: null,
+        profile: null,
     },
     catalog: {
         category: null,
-        products: null
+        products: null,
+        popularity: true
     },
     order: {
         basket: {
@@ -23,7 +35,9 @@ const initialState = {
 export function loginReducer(state = initialState.login, action) {
     switch (action.type) {
         case LOGIN:
-            return {...state, login: action.payload.login, token: action.payload.token, login_screen: false}
+            localStorage.setItem('token', action.payload.token)
+            localStorage.setItem('user', action.payload.profile)
+            return {...state, login: action.payload.login, token: action.payload.token, profile: action.payload.profile, login_screen: action.payload.login_screen}
         case LOGOUT:
             return {...state, login: action.payload.login, token: null}
         case LOGIN_SCREEN:
@@ -39,6 +53,8 @@ export function catalogReducer(state=initialState.catalog, action) {
             return {...state, category: action.payload.category}
         case PRODUCT:
             return {...state, products: action.payload.products}
+        case CHANGE_CATEGORY:
+            return {...state, popularity: action.payload.popularity}
         default:
             return state
     }
@@ -51,7 +67,7 @@ export function orderReducer(state=initialState.order, action) {
         case ORDERING:
             return {...state, ordering: action.payload}
         case ORDERED:
-            return {...state, created: action.payload}
+            return {...state, created: action.payload, sum_of_order: null}
         default:
             return state
     }

@@ -20,10 +20,8 @@ export default function Catalog() {
 
     }
 
-    console.log(a)
     const ordering = useSelector(state => state.order.ordering)
-
-
+    const tt = useSelector(state => state)
 
     return(
         <section className="catalog">

@@ -6,16 +6,16 @@ export const PRODUCT = "PRODUCT"
 export const ADD_TO_BASKET = "ADD_TO_BASKET"
 export const ORDERING = "ORDERING"
 export const ORDERED = "ORDERED"
+export const CHANGE_CATEGORY = "CHANGE_CATEGORY"
 
-// export const URL = 'http://127.0.0.1:8000'
-export const URL = 'https://ecofruits.store:8000'
+export const URL = 'http://127.0.0.1:8000'
+//export const URL = 'https://ecofruits.store:8000'
 
 ////// AUTHENTICATION SYSTEM ///////
 
 export const login_or_registration = (email, password) => {
-    console.log(email, password)
     return async dispatch => {
-        console.log(123)
+
         try {
             const content = {
                 "email": email,
@@ -33,24 +33,50 @@ export const login_or_registration = (email, password) => {
             )
 
             const response = await res.json()
-
             if (response.status === 'ok') {
+            console.log(response)
                 dispatch({
                          type: LOGIN,
                          payload: {
                              login: true,
-                             token: response.token
+                             token: response.token,
+                             login_screen: false,
+                             profile: await get_profile(response.token)
                          }
                      })
+
             } else {
                 if(response.status === 'wrong password') {
                     console.log('Я нашёл такого пользователя, но такой пароль неверный!')
                 }
             }
         }catch (e) {
-            alert(e)
+            console.log(e)
         }
     }
+}
+
+export const get_profile = async (token) => {
+      const data = await fetch(URL + '/v1/users/get_profile/', {
+          method: 'POST',
+          body: JSON.stringify({token: token}),
+          headers: {'Content-Type': 'application/json'}})
+      const profile = await data.json()
+
+
+
+      return profile
+    // return async dispatch => {
+    //     try {
+    //         const data = await fetch(URL + '/v1/users/get_profile/')
+    //         const profile = await data.json()
+    //
+    //         console.log(profile)
+    //     }
+    //     catch (e) {
+    //         alert(e)
+    //     }
+    // }
 }
 
 export const logout = () => {
@@ -98,13 +124,13 @@ export const fetchCategories = () => {
             dispatch({
                 type: CATEGORY,
                 payload: {
-                    category: category.results,
-                    products: category.results.products
+                    category: category,         // на боевом здесь и там будет с result'ом
+                    products: category.product //
                 }
             })
         }
         catch (e) {
-            alert(e)
+            console.log(e)
         }
     }
 }
@@ -112,19 +138,48 @@ export const fetchCategories = () => {
 export const fetchProducts = (id) => {
     return async dispatch => {
         try {
-             const data = await fetch(URL + '/v1/products/category/' + id + '/')
-             const products = await data.json()
+            if(id) {
+                 const data = await fetch(URL + '/v1/products/category/' + id + '/')
+                 const products = await data.json()
 
-            dispatch({
-                type: PRODUCT,
-                payload: {
-                    products: products,
+                 dispatch({
+                        type: PRODUCT,
+                        payload: {
+                            products: products,
+                            popularity: false
+                 }})
+            }
+
+            else if (id===0){
+
+                const data = await fetch(URL + '/v1/products/popularity/')
+                const products = await data.json()
+
+                dispatch({
+                    type: PRODUCT,
+                    payload: {
+                        products: products,
                 }
             })
+            }
+
+
+
         }
         catch (e) {
-            alert(e)
+            console.log(e)
         }
+    }
+}
+
+export const changeCat = (item) => {
+    return async dispatch => {
+        dispatch({
+            type: CHANGE_CATEGORY,
+            payload: {
+                popularity: item
+            }
+        })
     }
 }
 
@@ -152,8 +207,8 @@ export const addProductToBasket = (id, position, quantity, price, main_price) =>
     localStorage.setItem('sum', JSON.stringify(sum))
 
     let a = JSON.parse(localStorage.getItem('sum'))
+    console.log(typeof a.reduce((a, b) => a + b, 0))
 
-    console.log(a.reduce((a, b) => a + b, 0))
 
     // let item = {'position': position, 'quantity': quantity, 'price': price}
     // basket.push({
@@ -193,13 +248,14 @@ export const ordering = (status) => {
     }
 }
 
-export const createOrder = (method, name, address, house, flat, telephone, basket, sum) => {
+export const createOrder = (id, method, name, address, house, flat, telephone, basket, sum) => {
     return async dispatch => {
         try {
              const data = await fetch(
             URL + '/v1/sales/orders/', {
                 method: "POST",
                 body: JSON.stringify({
+                    "customer": id,
                     "price_sum": sum,
                     "delivery_address": 'Улица: ' + address + ' Дом: ' + house + ' Квартира: ' + flat,
                     "telephone_number": telephone,
@@ -211,6 +267,7 @@ export const createOrder = (method, name, address, house, flat, telephone, baske
             }
         )
             localStorage.removeItem('basket')
+            localStorage.setItem('sum', '[0]')
          const response = await data.json()
          console.log(response)
             dispatch({

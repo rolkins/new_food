@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import '../../src/styles/styles.css'
 import { Backdrop, Fade, } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -22,13 +22,16 @@ const style = {
 };
 
 export default function Header() {
+    console.log(localStorage.getItem('token'))
     const [open, setOpen] = React.useState(false);
     const [status, setStatus] = React.useState()
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+
     console.log(status)
     const dispatch = useDispatch()
+    console.log(localStorage.getItem('token'))
 
     return (
         <>
@@ -59,11 +62,17 @@ export default function Header() {
                        <nav className="header__nav">
                             <ul className="header__list">
                                 <li className="header__item" >
-                                    <p href="#"  className="header__link" onClick={() => dispatch(login_screen('1'))}>
+                                    {
+                                        localStorage.getItem('token') === null ?
+                                            <p href="#"  className="header__link" onClick={() => dispatch(login_screen('1'))}>
+                                                🚪 Войти
+                                            </p>
+                                            :
+                                              <p href="#"  className="header__link" onClick={() => localStorage.removeItem('token')}>
+                                                🚪 Выйти
+                                            </p>
+                                    }
 
-                                        {/*{ profile ? profile.user_email : <p onClick={() => handleOpen()}>Войти</p> }*/}
-                                        🚪 Войти
-                                    </p>
                                 </li>
                                 <li className="header__item" onClick={() => handleOpen(setStatus('about'))}>
                                     <p className="header__link">

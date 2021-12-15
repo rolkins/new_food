@@ -95,7 +95,7 @@ export default function Auth() {
                 autoFocus
                 onChange={getUsername}
                 value={username}
-                ref={usernameRef}
+                inputRef={usernameRef}
               />
               <TextField
                 margin="normal"
@@ -108,21 +108,28 @@ export default function Auth() {
                 autoComplete="current-password"
                 onChange={getPassword}
                 value={password}
-                ref={passwordRef}
+                inputRef={passwordRef}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Запомнить меня"
               />
               <Button
-                type="submit"
-                fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2, }}
+                // onClick={() => login_or_registration(username, password)}
                 onClick={() => dispatch(login_or_registration(username, password))}
               >
                 Войти или зарегистрироваться
               </Button>
+                {/*<Button*/}
+                {/*    fullWidth*/}
+                {/*    variant="contained"*/}
+                {/*    sx={{ mt: 3, mb: 2, }}*/}
+                {/*    onClick={() => dispatch(login_or_registration(username, password))}*/}
+                {/*>*/}
+                {/*    Передумал заходить*/}
+                {/*</Button>*/}
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">

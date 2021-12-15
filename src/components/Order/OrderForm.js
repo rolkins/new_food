@@ -16,7 +16,7 @@ export default function OrderForm() {
 
     const dispatch = useDispatch()
     const sum1 = useSelector(state => state.order.sum_of_order)
-    const [sum, setSum] = useState(12)
+    const [sum, setSum] = useState(sum1)
 
     const [method, setMethod] = useState('')
     const [name, setName] = useState()
@@ -199,8 +199,8 @@ export default function OrderForm() {
         </Grid>
 
         <Grid item xs={12} sm={6}>
-             <Button variant="contained" endIcon={<SendIcon />} onClick={() => dispatch(createOrder(method, name, address, house, flat, telephone, basket, sum))}>
-                Подтвердить заказ на сумму - ₽{sum}
+             <Button variant="contained" endIcon={<SendIcon />} onClick={() => dispatch(createOrder(localStorage.getItem('user'), method, name, address, house, flat, telephone, basket, sum))}>
+                Подтвердить заказ
              </Button>
         </Grid>
 
